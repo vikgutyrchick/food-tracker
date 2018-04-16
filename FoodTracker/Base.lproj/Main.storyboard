@@ -36,6 +36,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4M9-1x-LFv">
                                         <rect key="frame" x="0.0" y="66.5" width="278" height="30"/>
                                         <state key="normal" title="Установить текст метки по умолчанию"/>
+                                        <connections>
+                                            <action selector="setDefaultLabelText:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6oN-e5-m4W"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -51,10 +54,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="mealNameLabel" destination="sSW-sE-n3i" id="ubF-Or-new"/>
+                        <outlet property="nameTextField" destination="SOb-N1-AaN" id="Rhl-gd-6LQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-79.200000000000003" y="133.5832083958021"/>
+            <point key="canvasLocation" x="116" y="86"/>
         </scene>
     </scenes>
 </document>
