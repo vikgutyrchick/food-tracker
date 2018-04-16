@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="s7a-sp-EdE">
-                                <rect key="frame" x="0.0" y="40" width="320" height="96.5"/>
+                                <rect key="frame" x="0.0" y="40" width="320" height="424.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Название еды" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sSW-sE-n3i">
                                         <rect key="frame" x="0.0" y="0.0" width="113" height="20.5"/>
@@ -40,6 +41,12 @@
                                             <action selector="setDefaultLabelText:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6oN-e5-m4W"/>
                                         </connections>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="320" translatesAutoresizingMaskIntoConstraints="NO" id="0Gp-Ys-B1y">
+                                        <rect key="frame" x="0.0" y="104.5" width="320" height="320"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="0Gp-Ys-B1y" secondAttribute="height" multiplier="1:1" id="AEJ-vf-a8F"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="SOb-N1-AaN" secondAttribute="trailing" id="gbU-YM-IqK"/>
@@ -57,11 +64,12 @@
                     <connections>
                         <outlet property="mealNameLabel" destination="sSW-sE-n3i" id="ubF-Or-new"/>
                         <outlet property="nameTextField" destination="SOb-N1-AaN" id="Rhl-gd-6LQ"/>
+                        <outlet property="photoImageView" destination="0Gp-Ys-B1y" id="dAa-Yv-zjh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="116" y="86"/>
+            <point key="canvasLocation" x="-714" y="198"/>
         </scene>
     </scenes>
 </document>
