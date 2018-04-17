@@ -29,6 +29,9 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         
         // Handlethe text field's user input through delegate callbacks
         nameTextField.delegate = self
+        
+        // Enable the Save button only if the text field has a valid Meal name.
+        updateSaveButtonState()
     }
     
     // MARK: UITextFieldDelegate
@@ -40,7 +43,8 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        
+        updateSaveButtonState()
+        navigationItem.title = textField.text
     }
     
     // MARK: UIImagePickerControllerDelegate
@@ -48,6 +52,12 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         // Dismiss the picker if the user canceled
         dismiss(animated: true, completion: nil)
     }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        // Disable the Save button while editing
+        saveButton.isEnabled = false
+    }
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         // The info dictionary may contain multiple representations of the image. You want to use the original.
         guard let selectedImage = info[UIImagePickerControllerOriginalImage] as?
@@ -96,6 +106,13 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         // Make sure ViewController is notified when the user picks an image.
         imagePickerController.delegate = self
         present(imagePickerController, animated: true, completion: nil)
+    }
+    
+    // MARK: Private Methods
+    private func updateSaveButtonState() {
+        // Disable the Save button if the text is empty
+        let text = nameTextField.text ?? ""
+        saveButton.isEnabled = !text.isEmpty
     }
 }
 
