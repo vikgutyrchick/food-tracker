@@ -132,7 +132,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Новое блюдо" id="TyJ-3s-7Hu">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="0Hd-BX-OQ4"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="0Hd-BX-OQ4">
+                            <connections>
+                                <action selector="cancel:" destination="BYZ-38-t0r" id="zXv-lM-1s4"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="t5X-IZ-vEm">
                             <connections>
                                 <segue destination="7xc-MZ-u9d" kind="unwind" unwindAction="unwindToMealListWithSender:" id="dxO-5g-fUU"/>
