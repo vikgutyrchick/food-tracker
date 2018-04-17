@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="M0A-tn-Azr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PZa-ji-D8T">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -12,10 +12,26 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="tiP-5G-Q2d">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eYB-V7-d3r" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="PZa-ji-D8T" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="kl4-ly-1ts">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="M0A-tn-Azr" kind="relationship" relationship="rootViewController" id="VkN-74-flr"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="-4802" y="35"/>
+        </scene>
         <!--Meal Table View Controller-->
         <scene sceneID="Phd-gx-wKz">
             <objects>
-                <tableViewController id="M0A-tn-Azr" customClass="MealTableViewController" sceneMemberID="viewController">
+                <tableViewController id="M0A-tn-Azr" customClass="MealTableViewController" customModule="FoodTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="9Hf-XA-WiX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -57,10 +73,11 @@
                             <outlet property="delegate" destination="M0A-tn-Azr" id="q7y-es-zhP"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="eov-xU-KEJ"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w6X-pR-vz2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3838" y="35"/>
+            <point key="canvasLocation" x="-4014" y="35"/>
         </scene>
         <!--Meal View Controller-->
         <scene sceneID="tne-QT-ifu">
