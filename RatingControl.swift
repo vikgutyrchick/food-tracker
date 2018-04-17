@@ -103,6 +103,29 @@ import UIKit
         for (index, button)in ratingButtons.enumerated() {
             // If the index of a button is less than the rating, that button should be selected.
             button.isSelected = index < rating
+            
+            // Set the hint string for currently selected star
+            let hintString: String?
+            if rating == index + 1 {
+                hintString = "Нажмите, чтобы сбросить рейтинг до нуля"
+            } else {
+                hintString = nil
+            }
+            
+            // Calculate the value string
+            let valueString: String
+            switch (rating) {
+                case 0:
+                    valueString = "Нет рейтинга."
+                case 1:
+                    valueString = "Задана 1 звезда."
+                default:
+                    valueString = "Задано \(rating) звезд(ы)."
+            }
+            
+            // Assign the hint string and value string
+            button.accessibilityHint = hintString
+            button.accessibilityValue = valueString
         }
     }
     
