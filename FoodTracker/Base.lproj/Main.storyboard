@@ -15,7 +15,7 @@
         <!--Table View Controller-->
         <scene sceneID="Phd-gx-wKz">
             <objects>
-                <tableViewController id="M0A-tn-Azr" sceneMemberID="viewController">
+                <tableViewController id="M0A-tn-Azr" customClass="TableViewController" customModule="FoodTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="9Hf-XA-WiX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
