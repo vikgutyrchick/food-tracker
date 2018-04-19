@@ -21,8 +21,14 @@ class MealTableViewController: UITableViewController {
         // Use the edit button item provided by the table view controller
         navigationItem.leftBarButtonItem = editButtonItem
         
-        // Load the sample data
-        loadSampleMeals()
+        // Load and save meals, otherwise load sample data.
+        if let savedMeals = loadMeal() {
+            meals += savedMeals
+        }
+        else {
+            // Load the sample data.
+            loadSampleMeals()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -72,6 +78,7 @@ class MealTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             meals.remove(at: indexPath.row)
+            saveMeals()
             
             // Delete the row from the data source
             tableView.deleteRows(at: [indexPath], with: .fade)
@@ -103,32 +110,31 @@ class MealTableViewController: UITableViewController {
         super.prepare(for: segue, sender: sender)
         switch (segue.identifier ?? "") {
             
+            
         case "AddItem":
-            os_log("Additing a new meal.", log: OSLog.default, type: .debug)
+            os_log("Добавление нового блюда.", log: OSLog.default, type: .debug)
             
         case "ShowDetail":
             guard let mealDetailViewController = segue.destination as? MealViewController else {
-                fatalError("Unexpected destination: \(segue.destination)")
+                fatalError("Непредвиденное значение: \(segue.destination)")
             }
             
             guard let selectedMealCell = sender as? MealTableViewCell else {
-                fatalError("Unexpected destination: \(sender)")
+                fatalError("Неожиданный отправитель: \(sender)")
             }
             
             guard let indexPath = tableView.indexPath(for: selectedMealCell) else {
-                fatalError("The selected cell is not being displayed by the table")
+                fatalError("Выбранная ячейка не отображается в таблице.")
             }
             
             let selectedMeal = meals[indexPath.row]
             mealDetailViewController.meal = selectedMeal
-    
-            default:
-                fatalError("Unexpected Segue Identifier; \(segue.identifier)")
+            
+       default:
+            fatalError("Неожиданный идентификатор Segue; \(segue.identifier)")
         }
     }
     
-
-
     // MARK: Actions
     @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? MealViewController, let meal = sourceViewController.meal {
@@ -146,7 +152,11 @@ class MealTableViewController: UITableViewController {
             meals.append(meal)
             tableView.insertRows(at: [newIndexPath], with: .automatic)
         }
+        
+        // Save the meals.
+        saveMeals()
     }
+    
     // MARK: Private Methods
     
     private func loadSampleMeals() {
@@ -168,4 +178,18 @@ class MealTableViewController: UITableViewController {
         
         meals += [meal1, meal2, meal3]
     }
+    
+    private func saveMeals() {
+        let isSuccessfulSave  = NSKeyedArchiver.archiveRootObject(meals, toFile: Meal.ArchiveUrl.path)
+        if isSuccessfulSave {
+            os_log("Блюдо успешно созранено.", log: OSLog.default, type: .debug)
+        } else {
+            os_log("Не удалось сохранить блюдо...", log: OSLog.default, type: .debug)
+        }
+    }
+    
+    private func loadMeal() -> [Meal]? {
+        return NSKeyedUnarchiver.unarchiveObject(withFile: Meal.ArchiveUrl.path) as? [Meal]
+    }
+
 }

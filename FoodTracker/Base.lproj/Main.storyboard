@@ -76,7 +76,7 @@
                     <navigationItem key="navigationItem" title="Ваши блюда" id="eov-xU-KEJ">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="BAR-dA-FUC">
                             <connections>
-                                <segue destination="i1e-Vq-nDI" kind="show" id="jd3-WP-sl0"/>
+                                <segue destination="i1e-Vq-nDI" kind="presentation" id="mpL-2S-UXc"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -184,6 +184,6 @@
         <image name="defaultPhoto" width="313" height="313"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="tGI-Ql-QME"/>
+        <segue reference="Fxc-3v-cFo"/>
     </inferredMetricsTieBreakers>
 </document>
